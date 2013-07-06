@@ -1,0 +1,117 @@
+{# src/Firmas/FirmagBundle/Resources/views/Index/index.html.twig #}
+{% extends 'FirmasFirmaBundle::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>Búsqueda de Firmantes | Ruta 33</title>{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+
+	{% block header %} {{ parent() }} {% endblock %}
+
+
+	{% block content %} 
+
+			{% if Mensaje_Lista_Vacia is defined  %}
+					<div class="text-center alert alert-error">
+						{{ Mensaje_Lista_Vacia }}
+					</div>
+			{% elseif Mensaje_encontrado is defined %}
+					<div class="">
+					 <h5 class="text-center alert alert-info">
+						<span class="">{{ Mensaje_encontrado }}</span> </h5>
+						{% if firmas is defined %}
+							<table class="table table-condensed table-striped table-bordered span8 offset3">
+								<thead>
+									<th>Nombre</th>
+									<th>Documento</th>
+									<th>Ciudad</th>
+								{% if is_granted('ROLE_ADMIN') %}
+									<th>Acciones</th>
+								{% endif %}
+								</thead>
+
+								<tbody>
+
+								{% for elemento in firmas %}
+								<tr>
+									<td>{{elemento.nombre}}</td>
+									<td>{{elemento.dni}}</td>	
+
+									{% if elemento.ciudad == 'Otras' %}
+										<td class="alert-error">{{ elemento.Ciudad }}</td>
+										
+										{% if not is_granted('ROLE_ADMIN') %}
+											<tr class="alert alert-error">
+											  <td  colspan="3">
+												Por favor. Encarecidamente pedimos que envíe al grupo
+												de <a href="https://www.facebook.com/groups/528625330508783/" target="_blank">FACEBOOK</a> el nombre de su Ciudad, advirtiendo que usted ya está registrada y desea actualizar su Ciudad. Muchas Gracias.
+											  </td>
+											</tr>
+										{% endif %}
+
+									{% else %}
+										<td>{{elemento.Ciudad}}</td>
+						   			{% endif %}
+
+						   			{% if is_granted('ROLE_ADMIN') %}
+						   			<td>
+										<ul class="inline text-center">
+											<li><a class="btn" href="{{ path('persona_edit', { 'id': elemento.id }) }}">Editar</a></li>
+											<li><a class="btn" href="{{ path('persona_show', { 'id': elemento.id }) }}">Ver</a></li>
+										</ul>
+									</td>
+									{% endif %}
+								</tr>
+								{% endfor %}
+
+								</tbody>
+						   </table>
+						{% endif %}
+					</div>
+		{% else %}
+		<div class="row-fluid">
+			
+				{% if is_granted('ROLE_ADMIN') %}
+				<h3 class="text-center">Búsqueda por Documento</h3>
+					<form action="{{ path('FirmasAdminBundle_search_admin') }}" method="POST" class="" >
+				{% else %}
+				<h3 class="text-center">Ingrese su DNI para verificar si su firma se encuentra en el lista.</h3>
+					<form action="{{ path('FirmasFirmaBundle_search') }}" method="POST">
+				{% endif %}
+					<span class="alert alert-info form-horizontal span7 offset3">
+						<input type="number" name="dni" id="dni" placeholder="DNI" required="required" />
+						<input class="btn btn-success" type="submit" value="Verificar" />
+						<span>El campo sólo debe contener NÚMEROS (Ej. 36728654)</span>
+					</span>
+					</form>
+		</div>
+
+			<div class="row-fluid">
+				{% if is_granted('ROLE_ADMIN') %}
+				<h3 class="text-center">Búsqueda por Nombre</h3>
+					<form action="{{ path('FirmasAdminBundle_search_name') }}" method="POST">
+						<span class="alert alert-info form-horizontal span7 offset3">
+							<input type="text" name="nombre" id="nombre" placeholder="Nombre" required="required" />
+							<input class="btn btn-success" type="submit" value="Verificar" />
+							<span>Ingrese Parte o el Nombre Completo</span>
+						</span>
+					</form>
+				{% endif %}
+			</div>
+	{% endif %}
+		
+
+	{% endblock %}<!--content-->
+
+{% block footer %} {{ parent() }} {% endblock %}
+
+<!--body-->
+{% endblock %}
+
+
+{% block javascripts %}
+	{{ parent() }}
+{% endblock %}

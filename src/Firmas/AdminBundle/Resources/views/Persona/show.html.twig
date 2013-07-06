@@ -1,0 +1,60 @@
+{# src/Firmas/AdminBundle/Resources/views/Persona/show.html.twig #}
+{% extends 'FirmasAdminBundle::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>{{entity.nombre}}</title>{% endblock %}
+{% endblock %}
+
+{% block body -%}
+
+    {% block header %} {{parent()}} {% endblock %}
+
+    <div class="text-center"> <h1> {{entity.nombre}} </h1> </div>
+    
+    <ul class="record_actions inline text-center">
+        <li>
+            <a class="btn btn-info" href="{{ path('persona_edit', { 'id': entity.id }) }}">
+            Editar
+            </a>
+        </li>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li>
+            <form action="{{ path('persona_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit">Borrar</button>
+            </form>
+            </li>
+        {% endif %}
+    </ul>
+
+    <table class="table table-bordered record_properties cincuenta centrado">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ entity.dni }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad</th>
+                <td>{{ entity.ciudad }}</td>
+            </tr>
+            <tr>
+                <th>Fecha De Firmado</th>
+                <td>{{ entity.fechafirma|date('d-m-Y H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% block footer %} {{parent()}} {% endblock %}
+
+
+{% endblock %}
+
+{% block javascripts %}  
+    {{parent()}}
+{% endblock %}

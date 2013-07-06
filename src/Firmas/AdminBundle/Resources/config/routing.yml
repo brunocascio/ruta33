@@ -1,0 +1,39 @@
+# src/Firmas/AdminBundle/Resources/config/routing.yml
+
+# CONTROLADOR PERSONA PARA LOS INSERT EDIT UPDATE DELETE ETC
+FirmasAdminBundle_persona:
+    resource: "@FirmasAdminBundle/Resources/config/persona.yml"
+    prefix:   /persona
+
+FirmasAdminBundle_Admin:
+    pattern:  /
+    defaults: { _controller: FirmasAdminBundle:Admin:index }
+    requirements:
+        _method:  GET
+
+FirmasAdminBundle_lista_sin_completar:
+    pattern:  /listado-sin-completar
+    defaults: { _controller: FirmasAdminBundle:Admin:listadoSinCompletar }
+    requirements:
+        _method:  GET
+
+FirmasAdminBundle_lista_otras:
+    pattern:  /listado-revisar
+    defaults: { _controller: FirmasAdminBundle:Admin:listadorevisar }
+    requirements:
+        _method:  GET
+
+FirmasAdminBundle_lista_completa:
+    pattern:  /listado-completo
+    defaults: { _controller: "FirmasAdminBundle:Persona:index" }
+    requirements:
+        _method:  GET
+
+FirmasAdminBundle_search_admin:
+    pattern:  /buscar
+    defaults: { _controller: "FirmasFirmaBundle:Home:lista" }
+
+
+FirmasAdminBundle_search_name:
+    pattern:  /buscar/nombre
+    defaults: { _controller: "FirmasFirmaBundle:Home:listaByName" }

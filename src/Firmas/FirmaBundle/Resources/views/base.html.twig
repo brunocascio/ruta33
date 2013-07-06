@@ -1,0 +1,57 @@
+{# src/Firmas/FirmagBundle/Resources/views/Index/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>Firmas Autovía ruta 33</title>{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+    {% block header %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+              <span class="pull-left">
+                <a href="{{ path('FirmasAdminBundle_Admin') }}" class="btn btn-danger">
+                <i class="icon-lock"></i> Administradoras </a>
+              </span>
+
+                <div class="btn-group pull-right">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-th-large"></i>
+                       Menú
+                    <span class="caret"></span>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
+                      <li><a href="{{ path('FirmasFirmaBundle_homepage') }}">Firmar</a></li>
+                      <li><a href="{{ path('FirmasFirmaBundle_search') }}">Firmantes</a></li>
+                      <li class="divider"></li>
+                      <li><a href="{{ path('FirmasFirmaBundle_estadisticas') }}">Estadísticas</a></li>
+                  </ul>
+                </div>
+            </div><!--container-->
+        </div>
+    </div>
+{% endblock %}
+
+   
+  <!-- CONTENIDO DE LA PÁGINA -->
+   {% block content %} 
+
+    	{% block descripcion %}    {% endblock %}
+
+   {% endblock %}
+
+
+    {% block footer %}     {% endblock %}
+
+<!--body-->
+{% endblock %}
+
+
+{% block javascripts %}  
+    {{parent()}}
+{% endblock %}

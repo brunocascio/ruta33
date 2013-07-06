@@ -1,0 +1,94 @@
+{# src/Firmas/AdminBundle/Resources/views/base.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>Administración</title>{% endblock %}
+{% endblock %}
+
+{% block body %}
+
+
+	{% block header %}
+		<div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+
+            	<div class="btn-group pull-left">
+                  <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-user"></i>
+                       Menú Administrador
+                    <span class="caret"></span>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
+                    <li><a href="{{ path('FirmasAdminBundle_Admin') }}">Inicio</a></li>
+
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#">Listado</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="rojo" href="{{ path('FirmasAdminBundle_lista_sin_completar') }}">Ciudad Sin Completar</a></li>
+                          <li><a href="{{ path('FirmasAdminBundle_lista_otras') }}">Ciudad = "Otras"</a></li>
+                          <li><a href="{{ path('FirmasAdminBundle_lista_completa') }}">Listado Completo</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#">Acciones</a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="{{ path('FirmasAdminBundle_search_admin') }}">Buscar/Actualizar Usuario</a>
+                          </li>
+                          <li class="disabled">
+                           <a href="#">Agregar Ciudad</a>
+                          </li> 
+                        </ul>
+                    </li>
+
+                  </ul>
+                </div>
+
+                <div class="btn-group pull-right">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="icon-th-large"></i>
+                       Menú
+                    <span class="caret"></span>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <!-- dropdown menu links -->
+                      <li><a href="{{ path('FirmasFirmaBundle_homepage') }}">Firmar</a></li>
+                      <li><a href="{{ path('FirmasFirmaBundle_search') }}">Firmantes</a></li>
+                      <li class="divider"></li>
+                      <li><a href="{{ path('FirmasFirmaBundle_estadisticas') }}">Estadísticas</a></li>
+                  </ul>
+                </div>
+            </div><!--container-->
+        </div>
+    </div>
+	{% endblock %}
+
+
+	{% block content %} 
+
+
+  {% if user_name is defined %}
+		{% block descripcion %}
+			<div class="row-fluid">
+				<h2>Hola {{ user_name }} !</h2>
+			</div>
+		{% endblock %}
+  {% endif %}		
+
+	{% endblock %}<!--content-->
+
+{% block footer %} {{parent()}} {% endblock %}
+
+<!--body-->
+{% endblock %}
+
+
+{% block javascripts %}  
+    {{parent()}}
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    firmas_admin.example.class: Firmas\AdminBundle\Example
+
+services:
+#    firmas_admin.example:
+#        class: %firmas_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

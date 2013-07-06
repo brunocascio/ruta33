@@ -1,0 +1,38 @@
+persona:
+    pattern:  /
+    defaults: { _controller: "FirmasAdminBundle:Persona:index" }
+
+persona_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "FirmasAdminBundle:Persona:show" }
+    requirements:
+      id: \d+
+
+#persona_new:
+#    pattern:  /new
+#    defaults: { _controller: "FirmasAdminBundle:Persona:new" }
+
+#persona_create:
+#    pattern:  /create
+#    defaults: { _controller: "FirmasAdminBundle:Persona:create" }
+#    requirements: { _method: post }
+
+persona_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "FirmasAdminBundle:Persona:edit" }
+    requirements:
+      id: \d+
+
+persona_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "FirmasAdminBundle:Persona:update" }
+    requirements: 
+         _method: post|put 
+         id: \d+
+
+persona_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "FirmasAdminBundle:Persona:delete" }
+    requirements: 
+        _method: post|delete 
+        id: \d+

@@ -1,0 +1,7 @@
+firmas_firma:
+    resource: "@FirmasFirmaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+firmas_admin:
+    resource: "@FirmasAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin

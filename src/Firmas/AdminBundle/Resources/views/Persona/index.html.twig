@@ -1,0 +1,96 @@
+{# src/Firmas/AdminBundle/Resources/views/Persona/index.html.twig #}
+{% extends 'FirmasAdminBundle::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>Administración</title>{% endblock %}
+{% endblock %}
+
+{% block body -%}
+    {% block header %} {{parent()}} {% endblock -%}
+
+    <h1 class="text-center">Listado {% if titulo is defined %} <span class="text-info">{{ titulo }}</span> {% endif %}</h1>
+
+    {% if total is defined %}
+                <div class="row-fluid">
+                <h5 class="text-center alert alert-info">Total de Firmas: {{ total }}</h5>
+                </div>
+    {% endif %}
+
+    {% if Mensaje is defined %}
+                <div class="row span5 offset4">
+                <h5 class="text-center alert alert-info">{{ Mensaje }}</h5>
+                </div>
+    {% endif %}
+
+<div class="cincuenta centrado">
+    {# display navigation top #}
+    {% if pagination is defined %}
+    <div class="navigation row-fluid text-center">
+         {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <table class="table table-condensed table-bordered">
+        <tr>
+            {# sorting of properties based on query components #}
+            <th {% if pagination.isSorted('p.nombre') %} class="sorted" {% endif %}>
+                <i class="icon-tasks icon-black"></i>
+                {{ knp_pagination_sortable(pagination, 'Nombre Completo', 'p.nombre')|raw }}</th>
+            <th>
+                <i class="icon-tasks icon-black"></i>
+                {{ knp_pagination_sortable(pagination, 'Documento'|trans({}, 'messages'), 'p.dni' )|raw }}
+            </th>
+            <th>
+                <i class="icon-tasks icon-black"></i>
+                {{ knp_pagination_sortable(pagination, 'Ciudad'|trans({}, 'messages'), 'p.ciudad' )|raw }}
+            </th>
+            <th>
+                <i class="icon-pencil icon-black"></i>
+                Acciones
+            </th>
+        </tr>
+
+
+        {# table body #}
+        {% for article in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <td>{{ article.nombre }}</td>
+                {% if article.dni|length > 8 %}
+                <td class="alert-error">{{ article.dni }}</td>
+                {% else %}
+                <td>{{ article.dni }}</td>
+                {% endif %}
+                 {% if article.ciudad == 'Otras' %}
+                <td class="alert-info">{{ article.ciudad }}</td>
+                {% else %}
+                <td>{{ article.ciudad }}</td>
+                {% endif %}
+                <td>
+                    <ul class="inline">
+                        <li>
+                            <a href="{{ path('persona_show', { 'id': article.id }) }}">Ver</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('persona_edit', { 'id': article.id }) }}">Editar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# display navigation bottom #}
+    <div class="navigation row-fluid text-center">
+         {{ knp_pagination_render(pagination) }}
+    </div>
+{% endif %}
+</div>
+
+{% block footer %} {{parent()}} {% endblock %}
+
+
+{% endblock %}
+
+{% block javascripts %}  
+    {{parent()}}
+{% endblock %}

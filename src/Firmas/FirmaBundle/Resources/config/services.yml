@@ -1,0 +1,7 @@
+parameters:
+#    firmas_firma.example.class: Firmas\FirmaBundle\Example
+
+services:
+#    firmas_firma.example:
+#        class: %firmas_firma.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

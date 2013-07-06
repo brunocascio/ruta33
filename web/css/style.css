@@ -1,0 +1,68 @@
+
+body{
+	background: #FAFAFA;
+}
+
+h1,h2{
+	font-family: 'Oleo Script', 'Arial Black';
+}
+
+li{
+	list-style: none;
+}
+
+form ul li {
+	color: red;
+}
+
+.saludo{
+	margin: 2em auto;
+	font-size: 8em;
+	color: #777;
+	text-shadow: 1px 1px 1px black;
+}
+
+.table td{
+	vertical-align: middle;
+}
+
+
+.table .progress{
+	margin-bottom: 0;
+}
+
+.centrado{
+	margin: 0 auto;
+}
+
+.veinte{
+	width:20%;
+}
+
+.cuarenta{
+	width: 45%;
+}
+
+.cincuenta{
+	width: 60%;
+}
+
+.sombra{
+	text-shadow: 1px 2px rgba(0,0,0,0.2);
+}
+
+.rojo{
+	color: #FA5858 !important;
+}
+
+.formulario{
+	margin-top: 1em;
+}
+
+.tderecha{
+	text-align: right !important;
+}
+
+#firmas_firmabundle_personatype_enviar{
+	margin-top: 1em;
+}

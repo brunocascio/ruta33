@@ -1,0 +1,20 @@
+# src/Firmas/FirmaBundle/Resources/config/routing.yml
+FirmasFirmaBundle_homepage:
+    pattern:  /
+    defaults: { _controller: FirmasFirmaBundle:Home:index }
+
+FirmasFirmaBundle_save:
+    pattern:  /Save
+    defaults: { _controller: FirmasFirmaBundle:Home:save }
+    requirements:
+         _method: POST
+
+FirmasFirmaBundle_search:
+    pattern:  /buscar
+    defaults: { _controller: FirmasFirmaBundle:Home:lista }
+
+FirmasFirmaBundle_estadisticas:
+    pattern:  /estadisticas
+    defaults: { _controller: FirmasFirmaBundle:Home:estadisticas }
+    requirements:
+        _method:  GET

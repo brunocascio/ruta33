@@ -1,0 +1,34 @@
+{# src/Firmas/AdminBundle/Resources/views/Persona/new.html.twig #}
+{% extends 'FirmasAdminBundle::base.html.twig' %}
+
+{% block head %}
+     {{ parent() }}
+     {% block title %}<title>Administración</title>{% endblock %}
+{% endblock %}
+
+{% block body -%}
+    <h1>Persona creation</h1>
+
+    <form action="{{ path('persona_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('persona') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+
+{% block footer %} {{parent()}} {% endblock %}
+
+
+{% endblock %}
+
+{% block javascripts %}  
+    {{parent()}}
+{% endblock %}
