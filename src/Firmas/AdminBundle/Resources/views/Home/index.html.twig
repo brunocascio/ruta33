@@ -1,36 +1,6 @@
 {# src/Firmas/AdminBundle/Resources/views/Home/index.html.twig #}
 {% extends 'FirmasAdminBundle::base.html.twig' %}
 
-{% block head %}
-     {{ parent() }}
-     {% block title %}<title>Administración</title>{% endblock %}
-{% endblock %}
-
 {% block body %}
-
-
-	{% block header %}
-		{{ parent() }}
-	{% endblock %}
-
-
-	{% block content %} 
-
-
-		{% block descripcion %}
-			<div class="text-center">
-				<h1 class="saludo">Hola {{ user_name }} ! </h1>
-			</div>
-		{% endblock %}				
-
-	{% endblock %}<!--content-->
-
-{% block footer %} {{parent()}} {% endblock %}
-
-<!--body-->
-{% endblock %}
-
-
-{% block javascripts %}
-	{{ parent() }}
-{% endblock %}
+	{{ parent() }}	
+<!--body-->{% endblock %}

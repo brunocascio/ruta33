@@ -1,12 +1,7 @@
-{# src/Firmas/FirmagBundle/Resources/views/Index/index.html.twig #}
+{# src/Firmas/FirmaBundle/Resources/views/base.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% block head %}
-     {{ parent() }}
-     {% block title %}<title>Firmas Autovía ruta 33</title>{% endblock %}
-{% endblock %}
-
-{% block body %}
+{% block body -%}
 
     {% block header %}
     <div class="navbar">
@@ -35,27 +30,6 @@
             </div><!--container-->
         </div>
     </div>
-{% endblock %}
+{% endblock %}<!-- header -->
 
-   
-  <!-- CONTENIDO DE LA PÁGINA -->
-   {% block content %} 
-
-    	{% block descripcion %}    {% endblock %}
-
-   {% endblock %}
-
-
-    {% block footer %}   
-      <div class="text-center">
-         <img width="163" height="162" src="{{ asset('img/logo_ruta33.png') }}" alt="Ruta 33" title="Ruta 33" /> 
-      </div>
-    {% endblock %}
-
-<!--body-->
-{% endblock %}
-
-
-{% block javascripts %}  
-    {{parent()}}
-{% endblock %}
+<!--body-->{% endblock %}

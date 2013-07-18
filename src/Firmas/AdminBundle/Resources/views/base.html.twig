@@ -1,13 +1,7 @@
 {# src/Firmas/AdminBundle/Resources/views/base.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% block head %}
-     {{ parent() }}
-     {% block title %}<title>Administración</title>{% endblock %}
-{% endblock %}
-
-{% block body %}
-
+{% block body -%}
 
 	{% block header %}
 		<div class="navbar">
@@ -69,26 +63,12 @@
     </div>
 	{% endblock %}
 
-
-	{% block content %} 
-
-
   {% if user_name is defined %}
 		{% block descripcion %}
-			<div class="row-fluid">
-				<h2>Hola {{ user_name }} !</h2>
+			<div class="text-center">
+				<h2 class="saludo">Hola {{ user_name }} !</h2>
 			</div>
 		{% endblock %}
-  {% endif %}		
+  {% endif %}
 
-	{% endblock %}<!--content-->
-
-{% block footer %} {{parent()}} {% endblock %}
-
-<!--body-->
-{% endblock %}
-
-
-{% block javascripts %}  
-    {{parent()}}
-{% endblock %}
+<!--body-->{% endblock %}

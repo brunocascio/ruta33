@@ -1,13 +1,8 @@
-{# src/Firmas/FirmagBundle/Resources/views/Index/index.html.twig #}
+{# src/Firmas/FirmaBundle/Resources/views/Index/index.html.twig #}
 {% extends 'FirmasFirmaBundle::base.html.twig' %}
 
-{% block title %} {{ parent() }} {% endblock %}
-
-{% block body %}
-
-{% block content %} 
-
-{% block header %}{{ parent() }}  {% endblock %}
+{% block body -%}
+ {{ parent() }}
 
 {% block descripcion %}
 <div class="row-fluid text-center">
@@ -30,8 +25,6 @@
 	 </div>
 </div>
 {% endblock %}
-
-
 
 {% block form %}  
 		{% if( formulario_firma is defined) %}
@@ -76,20 +69,6 @@
 			</form>
 		</div>
 		{% endif %}
-
-
 {% endblock %}<!--form-->
 
-{% endblock %}<!--content-->
-
-{% block footer %}{{ parent() }} {% endblock %}
-
-<!--body-->
-{% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-	<script>
-		$('.dropdown-toggle').dropdown();
-	</script>
-{% endblock %}
+<!--body-->{% endblock %}

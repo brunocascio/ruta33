@@ -1,13 +1,9 @@
 {# src/Firmas/AdminBundle/Resources/views/Persona/index.html.twig #}
 {% extends 'FirmasAdminBundle::base.html.twig' %}
 
-{% block head %}
-     {{ parent() }}
-     {% block title %}<title>Administración</title>{% endblock %}
-{% endblock %}
-
 {% block body -%}
-    {% block header %} {{parent()}} {% endblock -%}
+    
+    {{parent()}}
 
     <h1 class="text-center">Listado {% if titulo is defined %} <span class="text-info">{{ titulo }}</span> {% endif %}</h1>
 
@@ -86,11 +82,4 @@
 {% endif %}
 </div>
 
-{% block footer %} {{parent()}} {% endblock %}
-
-
-{% endblock %}
-
-{% block javascripts %}  
-    {{parent()}}
 {% endblock %}

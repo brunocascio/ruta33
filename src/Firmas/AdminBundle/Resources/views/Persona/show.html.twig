@@ -1,14 +1,9 @@
 {# src/Firmas/AdminBundle/Resources/views/Persona/show.html.twig #}
 {% extends 'FirmasAdminBundle::base.html.twig' %}
 
-{% block head %}
-     {{ parent() }}
-     {% block title %}<title>{{entity.nombre}}</title>{% endblock %}
-{% endblock %}
-
 {% block body -%}
 
-    {% block header %} {{parent()}} {% endblock %}
+  {{parent()}}
 
     <div class="text-center"> <h1> {{entity.nombre}} </h1> </div>
     
@@ -49,12 +44,4 @@
             </tr>
         </tbody>
     </table>
-
-{% block footer %} {{parent()}} {% endblock %}
-
-
-{% endblock %}
-
-{% block javascripts %}  
-    {{parent()}}
 {% endblock %}
