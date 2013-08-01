@@ -4,20 +4,22 @@
 {% block body -%}
  {{ parent() }}
 
+ <div class="container text-center">
+
 {% block descripcion %}
-<div class="row-fluid text-center">
+<div class="row text-center">
 	<div class="row-fluid text-center sombra">
  		<h1> Ruta 33 la Muerte</h1>
  	</div>
 
 	 <div class="row-fluid text-center">
 	 	{% if Mensaje is defined %}
-			     <div class="text-left span6 offset4">
+			     <div class="text-left col-lg-6 col-offset-3">
 					{{ Mensaje | raw}}
 					<a href="{{ path('FirmasFirmaBundle_homepage') }}" class="link text-center">Volver al Formulario</a>
 			 	</div>
 		{% else %}
-			<div class="alert centrado cuarenta text-left">
+			<div class="alert col-lg-6 col-offset-3 text-left">
 				<span class="label label-important">Important</span>
 				<span>A traves de la presente se solicita a las autoridades gubernamentales inmediata intervención a dar respuesta ante la inaceptable situación de permanente riesgos a los usuarios de la Ruta Nacional 33.</span>
 			</div>
@@ -28,35 +30,35 @@
 
 {% block form %}  
 		{% if( formulario_firma is defined) %}
-		<div class="row-fluid text-center formulario">
-			<form class="form-horizontal" action="{{ path('FirmasFirmaBundle_save') }}"	method="post" {{ form_enctype(formulario_firma) }} novalidate>
+		<div class="formulario col-lg-6 col-offset-3">
+			<form action="{{ path('FirmasFirmaBundle_save') }}"	method="post" {{ form_enctype(formulario_firma) }} novalidate>
 		  <fieldset>
 			<table class="table table-bordered table-striped centrado cuarenta">
 				
 			   <div clas="control-group controls controls-row">
 				<tr>
 				      <div class="controls-row">
-				      	<td>{{ form_widget(formulario_firma.nombre, { 'attr': {'placeholder': 'Nombre Completo..'} } ) }}</td>
-				      	<td><span class="text-error">Nombre Completo</span></td>
+				      	<td>{{ form_widget(formulario_firma.nombre, { 'attr': {'placeholder': 'Nombre Completo..', 'class':'form-control'} } ) }}</td>
+				      	<td><span class="text-danger">Nombre Completo</span></td>
 				      </div>
 				</tr>
 
 				<tr>
-				      <div class=" controls-row">
-				      	<td>{{ form_widget(formulario_firma.dni, { 'attr': {'placeholder': 'Dni (Número)'} } ) }}</td>
-				      	<td><span class="text-error">Sólo Números (Ej. 32798765)</span></td>
+				      <div class="controls-row">
+				      	<td>{{ form_widget(formulario_firma.dni, { 'attr': {'placeholder': 'Dni (Número)', 'class':'form-control'} } ) }}</td>
+				      	<td><span class="text-danger">Sólo Números (Ej. 32798765)</span></td>
 				      </div>
 				</tr>
 
 				<tr>
 				     <div class="controls-row"> 
-				     	<td>{{ form_widget(formulario_firma.ciudad) }}</td>
-				     	<td><span class="text-error">Si no se encuentra en la lista, seleccione "Otras"</span></td>
+				     	<td>{{ form_widget(formulario_firma.ciudad,{ 'attr': {'class':'form-control'} }) }}</td>
+				     	<td><span class="text-danger">Si no se encuentra en la lista, seleccione "Otras"</span></td>
 				     </div>
 				</tr>
 
 				<tr>    
-					<td colspan="2">{{ form_widget(formulario_firma.enviar, {'attr': {'class': 'btn btn-primary'} }) }}</td>
+					<td colspan="2">{{ form_widget(formulario_firma.enviar, {'attr': {'class': 'btn btn-success pull-left'} }) }}</td>
 				</tr>
 			  </div><!-- control-group -->
 			  <tr>
@@ -70,5 +72,6 @@
 		</div>
 		{% endif %}
 {% endblock %}<!--form-->
+</div><!--container-->
 
 <!--body-->{% endblock %}

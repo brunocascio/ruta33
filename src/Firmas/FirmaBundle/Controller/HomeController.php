@@ -64,7 +64,7 @@ class HomeController extends Controller{
 
           return $this->render('FirmasFirmaBundle:Home:index.html.twig',
                 array(
-                    'Mensaje' => '<div class="alert alert-error">La Firma NO ha sido Guardada. <br/>
+                    'Mensaje' => '<div class="alert alert-danger">La Firma NO ha sido Guardada. <br/>
                                  - Puede deberse a que usted YA SE ENCUENTRA en la lista. <br/>
                                  - Los Campos ingresados no mantienen el FORMATO requerido.</div>',
                 ));          

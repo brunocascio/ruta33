@@ -3,28 +3,32 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="es"> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	{% block title %}<title>Ruta 33 "La Muerte"</title>{% endblock %}
 	{% block stylesheets %}
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.min.css') }}">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" media="screen">
+		<link rel="stylesheet" href="{{ asset('css/bootstrap-glyphicons.css') }}"> 
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
-		<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet'>
 	{% endblock %}
 </head>
 
 <body>
 	{% block body %} {% endblock %}
 	{% block footer %}   
-		<div class="text-center">
-			<img width="163" height="162" src="{{ asset('img/logo_ruta33.png') }}" alt="Ruta 33" title="Ruta 33" /> 
+		<div class="col-lg-12 text-center">
+			<img width="163" height="162" class="img-responsive" src="{{ asset('img/logo_ruta33.png') }}" alt="Ruta 33" title="Ruta 33" /> 
 		</div>
 	{% endblock %}
 	{% block javascripts %}
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-		<script> $('.dropdown-toggle').dropdown();	</script>
+		<!--<script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
+		 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+		<script>
+			$('.dropdown-toggle').dropdown();
+			$(".collapse").collapse();
+		</script>
 	{% endblock %}
 </body>
 </html>

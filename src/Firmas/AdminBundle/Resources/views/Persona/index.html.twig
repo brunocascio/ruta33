@@ -14,12 +14,12 @@
     {% endif %}
 
     {% if Mensaje is defined %}
-                <div class="row span5 offset4">
+                <div class="row col-lg-6 col-offset-3">
                 <h5 class="text-center alert alert-info">{{ Mensaje }}</h5>
                 </div>
     {% endif %}
 
-<div class="cincuenta centrado">
+<div class="col-lg-8 col-offset-2">
     {# display navigation top #}
     {% if pagination is defined %}
     <div class="navigation row-fluid text-center">
@@ -30,18 +30,18 @@
         <tr>
             {# sorting of properties based on query components #}
             <th {% if pagination.isSorted('p.nombre') %} class="sorted" {% endif %}>
-                <i class="icon-tasks icon-black"></i>
+                <i class="glyphicon glyphicon-align-justify"></i>
                 {{ knp_pagination_sortable(pagination, 'Nombre Completo', 'p.nombre')|raw }}</th>
             <th>
-                <i class="icon-tasks icon-black"></i>
+                <i class="glyphicon glyphicon-align-justify"></i>
                 {{ knp_pagination_sortable(pagination, 'Documento'|trans({}, 'messages'), 'p.dni' )|raw }}
             </th>
             <th>
-                <i class="icon-tasks icon-black"></i>
+                <i class="glyphicon glyphicon-align-justify"></i>
                 {{ knp_pagination_sortable(pagination, 'Ciudad'|trans({}, 'messages'), 'p.ciudad' )|raw }}
             </th>
             <th>
-                <i class="icon-pencil icon-black"></i>
+                <i class="glyphicon glyphicon-pencil"></i>
                 Acciones
             </th>
         </tr>
@@ -62,12 +62,12 @@
                 <td>{{ article.ciudad }}</td>
                 {% endif %}
                 <td>
-                    <ul class="inline">
+                    <ul class="list-inline">
                         <li>
-                            <a href="{{ path('persona_show', { 'id': article.id }) }}">Ver</a>
+                            <a class="btn btn-default" href="{{ path('persona_show', { 'id': article.id }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('persona_edit', { 'id': article.id }) }}">Editar</a>
+                            <a class="btn btn-info" href="{{ path('persona_edit', { 'id': article.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>

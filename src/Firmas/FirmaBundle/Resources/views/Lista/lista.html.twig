@@ -6,7 +6,7 @@
  {{ parent() }}
 
 {% if Mensaje_Lista_Vacia is defined  %}
-	<div class="text-center alert alert-error">
+	<div class="text-center alert alert-danger">
 	{{ Mensaje_Lista_Vacia }}
 	</div>
 {% elseif Mensaje_encontrado is defined %}
@@ -30,10 +30,10 @@
 					<td>{{elemento.dni}}</td>	
 
 					{% if elemento.ciudad == 'Otras' %}
-					<td class="alert-error">{{ elemento.Ciudad }}</td>
+					<td class="alert-danger">{{ elemento.Ciudad }}</td>
 
 					{% if not is_granted('ROLE_ADMIN') %}
-					<tr class="alert alert-error">
+					<tr class="alert alert-danger">
 						<td  colspan="3">
 							Por favor. Encarecidamente pedimos que envíe al grupo
 							de <a href="https://www.facebook.com/groups/528625330508783/" target="_blank">FACEBOOK</a> el nombre de su Ciudad, advirtiendo que usted ya está registrada y desea actualizar su Ciudad. Muchas Gracias.
@@ -47,7 +47,7 @@
 
 					{% if is_granted('ROLE_ADMIN') %}
 						<td>
-							<ul class="inline text-center">
+							<ul class="list-inline text-center">
 								<li><a class="btn" href="{{ path('persona_edit', { 'id': elemento.id }) }}">Editar</a></li>
 								<li><a class="btn" href="{{ path('persona_show', { 'id': elemento.id }) }}">Ver</a></li>
 							</ul>
@@ -55,13 +55,12 @@
 					{% endif %}
 				</tr>
 			{% endfor %}
-
 			</tbody>
 		</table>
 	{% endif %}
 
 {% else %}
-<div class="row-fluid">
+<div class="container">
 	{% if is_granted('ROLE_ADMIN') %}
 		<h3 class="text-center">Búsqueda por Documento</h3>
 		<form action="{{ path('FirmasAdminBundle_search_admin') }}" method="POST">
@@ -69,23 +68,23 @@
 		<h3 class="text-center">Ingrese su DNI para verificar si su firma se encuentra en el lista.</h3>
 		<form action="{{ path('FirmasFirmaBundle_search') }}" method="POST">
 	{% endif %}
-	<span class="alert alert-info form-horizontal span7 offset3">
-	<input type="number" name="dni" id="dni" placeholder="DNI" required="required" />
-	<input class="btn btn-success" type="submit" value="Verificar" />
-	<span>El campo sólo debe contener NÚMEROS (Ej. 36728654)</span>
-	</span>
+	<div class="alert alert-info col-lg-6 col-offset-3">	
+		<input type="number" name="dni" id="dni" placeholder="DNI" required="required" class="form-control" />
+		<p>El campo sólo debe contener NÚMEROS (Ej. 36728654)</p>
+		<input class="form-control btn btn-success" type="submit" value="Verificar" />	
+	</div>
 	</form>
 </div>
 
-	<div class="row-fluid">
+	<div class="container">
 		{% if is_granted('ROLE_ADMIN') %}
 		<h3 class="text-center">Búsqueda por Nombre</h3>
 			<form action="{{ path('FirmasAdminBundle_search_name') }}" method="POST">
-				<span class="alert alert-info form-horizontal span7 offset3">
-				<input type="text" name="nombre" id="nombre" placeholder="Nombre" required="required" />
-				<input class="btn btn-success" type="submit" value="Verificar" />
-				<span>Ingrese Parte o el Nombre Completo</span>
-				</span>
+				<div class="alert alert-info col-lg-6 col-offset-3">
+				<input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre o parte del Nombre" required="required" />
+				<p>Ingrese Parte o el Nombre Completo</p>
+				<input class="form-control btn btn-success" type="submit" value="Verificar" />
+				</div>
 			</form>
 		{% endif %}
 	</div>

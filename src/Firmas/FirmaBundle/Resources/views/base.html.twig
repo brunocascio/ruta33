@@ -5,31 +5,37 @@
 
     {% block header %}
     <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-              <span class="pull-left">
-                <a href="{{ path('FirmasAdminBundle_Admin') }}" class="btn btn-danger">
-                <i class="icon-lock"></i> Administradoras </a>
-              </span>
+      <div class="container">
+          <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-                <div class="btn-group pull-right">
-                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="icon-th-large"></i>
-                       Menú
-                    <span class="caret"></span>
-                  </a>
+        <div class="nav-collapse collapse navbar-responsive-collapse">
+          <div class="pull-left">
+            <a href="{{ path('FirmasAdminBundle_Admin') }}" class="btn btn-danger navbar-btn">
+              <span class="glyphicon glyphicon-lock"> Administradoras</span>
+            </a>
+          </div>
 
-                  <ul class="dropdown-menu">
-                    <!-- dropdown menu links -->
-                      <li><a href="{{ path('FirmasFirmaBundle_homepage') }}">Firmar</a></li>
-                      <li><a href="{{ path('FirmasFirmaBundle_search') }}">Firmantes</a></li>
-                      <li class="divider"></li>
-                      <li><a href="{{ path('FirmasFirmaBundle_estadisticas') }}">Estadísticas</a></li>
-                  </ul>
-                </div>
-            </div><!--container-->
-        </div>
-    </div>
+          <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-th-large"> Menú</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <!-- dropdown menu links -->
+                <li><a href="{{ path('FirmasFirmaBundle_homepage') }}">Firmar</a></li>
+                <li><a href="{{ path('FirmasFirmaBundle_search') }}">Firmantes</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('FirmasFirmaBundle_estadisticas') }}">Estadísticas</a></li>
+            </ul>
+          </div><!--btn-group-->
+        </div><!--nav-collapse collapse navbar-responsive-collapse-->
+      </div><!--container-->
+    </div><!--navbar-->
 {% endblock %}<!-- header -->
 
 <!--body-->{% endblock %}

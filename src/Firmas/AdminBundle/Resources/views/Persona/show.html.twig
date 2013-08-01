@@ -5,9 +5,9 @@
 
   {{parent()}}
 
-    <div class="text-center"> <h1> {{entity.nombre}} </h1> </div>
+    <div class="container text-center"> <h1> {{entity.nombre}} </h1> </div>
     
-    <ul class="record_actions inline text-center">
+    <ul class="list-inline text-center">
         <li>
             <a class="btn btn-info" href="{{ path('persona_edit', { 'id': entity.id }) }}">
             Editar
@@ -24,7 +24,8 @@
         {% endif %}
     </ul>
 
-    <table class="table table-bordered record_properties cincuenta centrado">
+<div class="row col-lg-6 col-offset-3">
+    <table class="table table-bordered">
         <tbody>
             <tr>
                 <th>Nombre</th>
@@ -44,4 +45,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 {% endblock %}
